@@ -7,3 +7,8 @@ before_script:
   - psql -c 'CREATE DATABASE travis_test;' -U postgres
 notifications:
   email: false
+deploy:
+  provider: heroku
+  run: "knex migrate:latest"
+app: travis-test
+skip_cleanup: true
